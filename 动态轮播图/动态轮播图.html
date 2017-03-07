@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        .box{
+            width: 730px;
+            height: 454px;
+            overflow: hidden;
+            margin:10px auto;
+            position: relative;
+        }
+        .circle{
+            position: absolute;
+            left: 50%;
+            margin-left: -50px;
+            bottom: 10px;/*要设置bottom否则看不见*/
+        }
+        .circle span{/*span要设置高度，宽度，要设置成浮动，或者是display*/
+            display:inline-block;
+            width: 18px;
+            height: 18px;
+            margin-left: 5px;
+            border-radius:50%;
+            background-color: pink;
+            text-align: center;
+            line-height: 18px;
+            cursor: pointer;
+        }
+        .circle span.current{/*设置当前的圆点*/
+            background-color: purple;
+        }
+
+    </style>
+    <script>
+        window.onload=function(){
+            var ul=document.getElementById("ul");
+            var length=ul.children.length;
+            var cir=document.createElement("div");
+            cir.className="circle";
+            var circle=ul.parentNode.parentNode.appendChild(cir);
+            for(var i=0;i<length;++i){
+                var sp=document.createElement("span");
+                sp.innerHTML=i+1;
+                cir.appendChild(sp);
+            }
+           var child= document.getElementsByClassName("circle")[0].children;
+            child[0].setAttribute("class","current");
+            for(var i=0;i<child.length;++i){
+                child[i].onmouseover=function(){
+                    for(var j=0;j<child.length;++j){/*干掉其他人*/
+                        child[j].className="";
+                    }
+                    this.className='current';
+                }
+
+            }
+
+
+        }
+
+    </script>
+</head>
+<div class="box">
+    <div class="slider">
+        <ul id="ul">
+            <li><img src="images/11.jpg" alt=""/></li>
+            <li><img src="images/22.jpg" alt=""/></li>
+            <li><img src="images/33.jpg" alt=""/></li>
+            <li><img src="images/44.jpg" alt=""/></li>
+            <li><img src="images/55.jpg" alt=""/></li>
+            <li><img src="images/66.jpg" alt=""/></li>
+            <li><img src="images/66.jpg" alt=""/></li>
+            <li><img src="images/66.jpg" alt=""/></li>
+        </ul>
+    </div>
+   <!-- <div class="circle">
+        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+    </div>-->
+</div>
+
+</body>
+</html>

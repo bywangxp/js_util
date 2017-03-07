@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 400px;
+            height:50px;
+            margin: 100px auto;
+            position: relative;
+        }
+        input{
+            outline-style: none;
+        }
+
+        div label{
+            color: #CCCCCC;
+            font-size: 12px;
+            position: absolute;
+            left: 10px;
+            top: 5px;
+            cursor: text;
+        }
+
+    </style>
+    <script>
+        window.onload=function(){
+            function $(id){
+                return document.getElementById(id);
+            }
+            $("txt").oninput=function(){
+                if(this.value==""){
+                    $("message").style.display="block";
+                }else{
+                    $("message").style.display="none";
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+<div class="search">
+    <input type="text" id="txt"/>
+    <label for="txt" id='message'>必败的国际大牌</label>
+</div>
+
+</body>
+</html>

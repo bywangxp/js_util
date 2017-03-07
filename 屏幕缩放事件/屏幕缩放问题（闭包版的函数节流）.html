@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id='box'></div>
+
+</body>
+</html>
+<script type="text/javascript">
+	var box=document.getElementById("box");
+	var num=0;
+	var i=1;
+	window.onresize=function(){
+		var timer=null; 
+		return function(){
+		  alert(i);
+		  clearTimeout(timer);//一定要清除之前的事件
+		  timer=window.setTimeout(fun2,300);// 设置延迟事件，延迟执行
+		 }
+		}(i);
+	//window.onresize=throttle(fun2,30);
+	/*function throttle(fun,delay){
+		var timer=null;
+		return function(){
+		  clearTimeout(timer);//一定要清楚
+		  timer=window.setTimeout(fun,delay);
+		 }
+	}*/
+	function fun2(){
+		num++;
+		box.innerHTML=window.innerWidth || document.documentElement.clientWidth;
+		console.log(num);
+	}
+</script>

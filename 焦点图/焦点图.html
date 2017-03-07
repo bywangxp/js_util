@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 490px;
+            height: 170px;
+            border: 1px solid black;
+            margin: 100px auto;
+            position: relative;
+        }
+        ul,li{
+            list-style: none;
+        }
+        .inner ul{
+            width: 400%;/*具体设置多少呢 */
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+         ul li{
+            float: left;
+        }
+
+        .box .ul {
+            margin-left: 50%;
+            left: -90px;
+            position: absolute;
+            bottom: 10px;
+        }
+        .ul li{
+            width: 18px;
+            height: 18px;
+            line-height: 18px;
+            background: pink;
+            text-align: center;
+            margin-left:20px ;
+            cursor: pointer;
+        }
+        .box .ul  .current{/*为什么当我直接点current不显示呢？*/
+             background-color: yellow;
+         }
+
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="inner">
+            <ul>
+                <li><img src="images/01.jpg" alt=""/></li>
+                <li><img src="images/02.jpg" alt=""/></li>
+                <li><img src="images/03.jpg" alt=""/></li>
+                <li><img src="images/04.jpg" alt=""/></li>
+            </ul>
+        </div>
+        <ul class="ul">
+            <li class="current">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+  <script type="text/javascript">
+  		function createAjax(){
+  			var ajax=null;
+  			try{
+  				ajax=new ActiveObject();
+  			}catch(e1){
+  			
+  				ajax=new XMLHttpRequest();
+  			}
+  			return ajax;
+  		}
+  		window.onload=function(){
+  			document.getElementById("btn").onclick=function(){
+  				// 1.创建AJAX实体
+  				var ajax=createAjax();
+  				// 2.准备发送对象
+  				var method="POST";
+  				var uri="/MyTest/hello";
+  				
+  				ajax.open(method,encodeURI(uri));
+  				//默认ajax请求是get请求,当设为post，他会将请求体重的汉字自动进行utf-8的编码
+  				ajax.setRequestHeader("content-type","application/x-www-form-urlencoded")
+  				// 3.异步对象实体真正发送请求数据到服务器，如果请求无数据，则null
+  				var content="content=测试";
+  				ajax.send(content);
+  				// 4.服务器会送请求
+  				ajax.onreadystatechange=function(){
+  					if(ajax.readyState == 4){
+  						if(ajax.status == 200){
+  							var str=ajax.responseText;
+  							console.log(str);
+  							document.getElementsByTagName("span")[0].innerHTML=str;
+  						}
+
+  					}
+  				}
+  			}
+  		}
+  </script>
+ <body>
+   <button id="btn">异步刷新</button>
+  <span ></span>
+</body>
+</html>

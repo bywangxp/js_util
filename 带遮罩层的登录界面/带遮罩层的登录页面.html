@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;padding:0;
+		}
+		.login{
+			height:20px;
+			width:100px;
+			background-color: pink;
+		}
+		.mask{
+			display: none;
+			background-color: rgba(0,0,0,.4);
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			z-index: 999;
+		}
+		.box{
+			display: none;
+			position:fixed;
+			top: 20%;
+			left: 30%;
+			height: 300px;
+			width: 400px;
+			background-color: pink;
+			z-index: 1000;
+		}
+		.clo{
+			position: absolute;
+			top: 5px;
+			right: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var login=document.getElementById("login");
+			var mask=document.getElementById("mask");
+			var box=document.getElementById("box");
+			var clo=document.getElementById("clo");
+
+			login.onclick=function(){
+				mask.style.display="block";
+				box.style.display="block";
+			}
+			clo.onclick=function(){
+				mask.style.display="none";
+				box.style.display="none";
+			}
+
+
+
+		}
+
+	</script>
+	
+</head>
+<body>
+<div class="body">
+	<div class='login' id='login'><a href="javascript:;">你好，请登录</a></div>
+	<div class="mask"  id='mask'></div>
+	<div class='box' id='box'>
+		<span class="clo" id='clo'>×</span>
+	</div>
+</div>　
+</body>
+</html>

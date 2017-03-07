@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id='box'></div>
+
+</body>
+</html>
+<script type="text/javascript">
+	var box=document.getElementById("box");
+	var num=0;
+	window.onresize=function(){
+		num++;
+		box.innerHTML=window.innerWidth || document.documentElement.clientWidth;//ie8有bug，num值变化幅度太大，引入闭包版的延迟
+		console.log(num);
+	}
+
+</script>

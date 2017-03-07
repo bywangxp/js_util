@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            width:512px;
+            height: 500px;
+            margin: 100px auto;
+            position:relative;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+        }
+        #up{
+            width: 512px;
+            height: 250px;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+        }
+        #down{
+            width: 512px;
+            height: 250px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        #img {/*必须设置图片的定位*/
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="mi.png" alt='' id="img">
+        <span id="up">123</span>
+        <span id="down">34</span>
+    </div>
+
+</body>
+</html>
+<script>
+    var up=document.getElementById("up");
+    var down=document.getElementById("down");
+    var img=document.getElementById("img");
+    var num = 0;// 记录top值
+    var timer=null;
+    up.onmouseover=function(){//设置往上走
+        window.clearInterval(timer)
+        var timer=window.setInterval(function(){
+            num -= 3;
+            if(num <= -940){
+                window.clearInterval(timer);
+            }
+            img.style.top = num+"px";// 必须设置单位，容易忽略
+        },10);
+    }
+    down.onmouseover=function(){//设置往下走
+        window.clearInterval(timer);
+        timer=window.setInterval(function(){
+            num += 3;
+            if(num >= 0){
+                window.clearInterval(timer);
+            }
+            img.style.top = num+"px";// 必须设置单位，容易忽略
+        },10);
+    }
+    alert(up.parentNode);
+    up.parentNode.onmouseout=function(){
+        window.clearInterval(timer);
+    }
+
+
+</script>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		div{
+			width:30px;
+			height:30px;
+			background-color:pink;
+			margin: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			function fun(className,id){
+				//支持getElementsByClassName
+				//分为有id，无id两种情况
+				if(document.getElementsByClassName){
+					if(id){//有id
+						var idNode=document.getElementById(id);
+						var nodes=idNode.getElementsByClassName(className);
+					}else{
+						var nodes=document.getElementsByClassName(className);
+					}
+					return nodes;
+				}else{
+					var list=null;
+					if(id){
+						var idNode=document.getElementById(id);
+						var list=idNode.getElementsByTagName("*");
+					}else{
+						var list=document.getElementsByTagName("*");
+					}
+					var arr=[];
+					for(var i=0;i<list.length;++i){
+						var className1=list[i].className.split(" ");
+						for(var j=0;j<className1.length;++j){
+							if(className1[j]==className){
+								arr.push(list[i]);
+								break;
+							}
+						}
+					}
+				
+				}
+					return arr;
+		}
+		var aa=fun("find");
+		for(var i=0;i<aa.length;++i){
+			aa[i].style.backgroundColor='black';
+		}
+		alert(aa.length);
+	}
+	</script>
+</head>
+<body>
+<div class='text'></div>	
+<div></div>	
+<div></div>	
+<div id='demo'>
+	<div class='text find'></div>
+	<div id='text find'></div>
+	<div class='find'></div>
+</div>	
+<div></div>	
+<div></div>	
+<div class='find'></div>	
+<div class='find'></div>	
+
+</body>
+</html>

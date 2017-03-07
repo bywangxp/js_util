@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+
+        }
+        ul,li{
+            list-style: none;
+            float: left;
+
+        }
+        img{
+            vertical-align: top;/* 取消图片顶端的3像素的间隔 */
+        }
+        .box{
+            margin: 100px auto;
+            border: 1px solid black;
+            width: 600px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+
+
+        }
+        .box ul{
+            width: 300%;/*ul是大盒子，要足够大，能装的下六张图*/
+            position: absolute;
+            left: 0;
+            top:0;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+        <ul id="img">
+            <li><img src="images/01.jpg" alt=""/></li>
+            <li><img src="images/02.jpg" alt=""/></li>
+            <li><img src="images/03.jpg" alt=""/></li>
+            <li><img src="images/04.jpg" alt=""/></li>
+            <!--添加两个额外的图片，用来过渡，
+                      当第四张图走完，中间空了出来，需要填补
+                      -->
+            <li><img src="images/01.jpg" alt=""/></li>
+            <li><img src="images/02.jpg" alt=""/></li>
+
+        </ul>
+        
+    </div>
+
+</body>
+</html>
+<script>
+    var img=document.getElementById("img");
+    var box=document.getElementById("box");
+    var time=window.setInterval(fun,5);
+    var num = 0;/*记录左端的值*/
+    function fun(){
+        num--;
+        num<=-1200 ? num = 0: num;
+        if(num ==0 ){
+
+        }
+        img.style.left = num+"px";/*切记加px*/
+
+    }
+    box.onmouseover=function(){
+        window.clearInterval(time);
+    }
+    box.onmouseout=function(){
+        time=window.setInterval(fun,5);/*此事件仍然命名成time，否则清除时间无效*/
+    }
+
+
+
+</script>

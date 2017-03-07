@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .clock{
+            width: 600px;
+            height: 600px;
+            background: url(images/clock.jpg);
+            margin: 100px auto;
+            position: relative;
+        }
+        .clock div{
+            position:absolute;
+            width: 600px;
+            height: 600px;
+            left: 0;
+            top: 0;
+        }
+        .hour{
+            background:url(images/hour.png ) no-repeat center center;
+        }
+        .min{
+            background:url(images/minute.png ) no-repeat center center;
+        }
+        .sec{
+            background:url(images/second.png ) no-repeat center center;
+        }
+    </style>
+    <script>
+        window.setInterval( function(){
+            var date=new Date();
+            var sec=document.getElementById("sec");
+            var min=document.getElementById("min");
+            var hour=document.getElementById("hour");
+            // 注意此时算时间要算上比它小一级的时间，是一个分数形式  先从毫秒开始
+            var mill=date.getMilliseconds();
+            var seconds=date.getSeconds()+mill/1000;
+            var minutes=date.getMinutes()+seconds/60;
+            var hours=(date.getHours())%12+minutes/60;//时间是24小时制的
+            sec.style.WebkitTransform = "rotate("+seconds*6+"deg)";/*css3特性*/
+            min.style.WebkitTransform = "rotate("+minutes*6+"deg)";
+            hour.style.WebkitTransform = "rotate("+hours*30+"deg)";
+        },1000);
+    </script>
+</head>
+<body>
+<div class="clock">
+    <div class="hour" id="hour"></div>
+    <div class="min" id="min"></div>
+    <div class="sec" id="sec"></div>
+
+</div>
+
+</body>
+</html>
